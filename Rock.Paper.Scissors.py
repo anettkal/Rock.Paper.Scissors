@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-
+import random
 """This program plays a game of Rock, Paper, Scissors between two Players,
 and reports both Player's scores each round."""
 
 moves = ['rock', 'paper', 'scissors']
+
 
 """The Player class is the parent class for all of the Players
 in this game"""
@@ -15,6 +16,11 @@ class Player:
 
     def learn(self, my_move, their_move):
         pass
+
+class RandomPlayer(Player):
+    def move(self):
+        move = random.choice(moves)
+        return move
 
 
 def beats(one, two):
@@ -44,5 +50,5 @@ class Game:
 
 
 if __name__ == '__main__':
-    game = Game(Player(), Player())
+    game = Game(RandomPlayer(), RandomPlayer())
     game.play_game()
