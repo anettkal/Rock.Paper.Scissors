@@ -24,8 +24,11 @@ class RandomPlayer(Player):
 
 class HumanPlayer(Player):
     def move(self):
-        move = input("Rock, paper, scissors? >")
-        return  move
+        while True:
+            move = input("Rock, paper, scissors? >").lower()
+            if move == "rock" or move == "paper" or move == "scissors":
+                break
+        return move
 
 
 def beats(one, two):
@@ -69,6 +72,3 @@ class Game:
 if __name__ == '__main__':
     game = Game(HumanPlayer(), RandomPlayer())
     game.play_game()
-
-#TODO: get result saved each round
-#TODO: announce winner
