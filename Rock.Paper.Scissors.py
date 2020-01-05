@@ -93,7 +93,7 @@ class Game:
                 print(f"Round {round} --")
                 self.play_round()
                 round += 1
-        print((f"FINAL SCORE: \nPlayer One: {self.countP1}," +
+        print((f"FINAL SCORE: \nPlayer One: {self.countP1}, " +
                f"Player Two: {self.countP2} \n"))
         if self.countP1 > self.countP2:
             print("Player One is the final WINNER! \n" +
