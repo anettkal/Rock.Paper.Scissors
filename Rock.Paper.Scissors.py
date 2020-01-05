@@ -15,7 +15,8 @@ class Player:
         return 'rock'
 
     def learn(self, my_move, their_move):
-        pass
+        self.my_move = my_move
+        self.their_move = their_move
 
 class RandomPlayer(Player):
     def move(self):
@@ -29,6 +30,24 @@ class HumanPlayer(Player):
             if move == "rock" or move == "paper" or move == "scissors":
                 break
         return move
+
+class ReflectPlayer(Player):
+    their_move = random.choice(moves)
+    def move(self):
+        return self.their_move
+
+class CyclePlayer(Player):
+    my_move = random.choice(moves)
+    def move(self):
+        index = moves.index(self.my_move)
+        index = (index + 1) % 3
+        return moves[index]
+        #if self.my_move == "rock":
+        #    return "paper"
+        #elif self.my_move == "paper":
+        #    return "scissors"
+        #elif self.my_move == "scissors":
+        #    return "rock"
 
 
 def beats(one, two):
@@ -70,5 +89,5 @@ class Game:
 
 
 if __name__ == '__main__':
-    game = Game(HumanPlayer(), RandomPlayer())
+    game = Game(HumanPlayer(), CyclePlayer())
     game.play_game()
